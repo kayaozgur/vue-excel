@@ -39,7 +39,8 @@ new Vue({
 				const data = XLSX.utils.sheet_to_json(ws, {header:1, raw:"true"});
 				/* Update state */
 				this.data = data;
-				//this.cols = make_cols(ws['!ref']);
+				const make_cols = refstr => Array(XLSX.utils.decode_range(refstr).e.c + 1).fill(0).map((x,i) => ({name:XLSX.utils.encode_col(i), key:i}));
+				this.cols = make_cols(ws['!ref']);
 			};
 			reader.readAsBinaryString(file);
 		}

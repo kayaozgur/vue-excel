@@ -12,7 +12,8 @@
 
 
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@4.2.1/dist/css/bootstrap.min.css" />
-
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.css" />
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@4.2.1/dist/css/bootstrap.min.css" />
 
 
 </head>
@@ -24,23 +25,29 @@
 
     
       <table class="table table-striped">
-        <thead class="bg-warning">
+        <thead class="bg-success">
           <tr>
-            <th v-for="c in cols" :key="c.key"></th>
+            <th v-for="c in cols" :key="c.key">{{data[0][c.key]}}</th>
+            <th>Stok</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(r, key) in data" :key="key">
-            <td v-for="c in cols" :key="c.key"> {{ r[c.key] }}</td>
+            <td v-for="c in cols" :key="c.key"> {{r[c.key] }}</td>
+            <td><input type="text"></td>
           </tr>
         </tbody>
       </table>
+
+    
    
   </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+  <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
 
 
 
