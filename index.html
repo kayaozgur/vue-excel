@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+  <style>
+    #table {
+      margin: 10px;
+    }
+  </style>
+
+
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap@4.2.1/dist/css/bootstrap.min.css" />
+
+
+
+</head>
+
+<body>
+
+  <div id="table">
+    <input type="file" class="form-control" value="Dosya Ekle" id="file" @change="_change" />
+
+    
+      <table class="table table-striped">
+        <thead class="bg-warning">
+          <tr>
+            <th v-for="c in cols" :key="c.key"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(r, key) in data" :key="key">
+            <td v-for="c in cols" :key="c.key"> {{ r[c.key] }}</td>
+          </tr>
+        </tbody>
+      </table>
+   
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
+
+
+
+  <script src="renderer.js"></script>
+</body>
+
+</html>
