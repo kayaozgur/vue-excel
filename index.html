@@ -24,7 +24,7 @@
     <input type="file" class="form-control" value="Dosya Ekle" id="file" @change="_change" />
 
     <b-input-group class="mt-3 mb-3" size="sm">
-      <b-form-input v-model="keyword" placeholder="Search" type="text"></b-form-input>
+      <b-form-input v-model="keyword" autofocus placeholder="Ürün Kodunu Girin...." type="text"></b-form-input>
       <b-input-group-text slot="append">
         <b-btn class="p-0" :disabled="!keyword" variant="link" size="sm" @click="keyword = ''"><i class="fa fa-remove"></i></b-btn>
       </b-input-group-text>
@@ -37,9 +37,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(r, key) in items" :key="key">
+          <tr v-for="(r, index) in items" :key="index">
             <td v-for="c in cols" :key="c.key"> {{r[c.key] }}</td>
-            <td><input type="text"></td>
+            <td><input type="number" value="index"></td>
           </tr>
         </tbody>
       </table>
@@ -51,8 +51,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>
-  <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <script src="https://unpkg.com/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
+<script src="https://unpkg.com/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.js"></script>
 
 
 
