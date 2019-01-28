@@ -23,7 +23,12 @@
   <div id="table">
     <input type="file" class="form-control" value="Dosya Ekle" id="file" @change="_change" />
 
-    
+    <b-input-group class="mt-3 mb-3" size="sm">
+      <b-form-input v-model="keyword" placeholder="Search" type="text"></b-form-input>
+      <b-input-group-text slot="append">
+        <b-btn class="p-0" :disabled="!keyword" variant="link" size="sm" @click="keyword = ''"><i class="fa fa-remove"></i></b-btn>
+      </b-input-group-text>
+    </b-input-group>
       <table class="table table-striped">
         <thead class="bg-success">
           <tr>
@@ -32,7 +37,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(r, key) in data" :key="key">
+          <tr v-for="(r, key) in items" :key="key">
             <td v-for="c in cols" :key="c.key"> {{r[c.key] }}</td>
             <td><input type="text"></td>
           </tr>

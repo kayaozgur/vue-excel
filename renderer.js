@@ -2,6 +2,7 @@ new Vue({
 	el: "#table",
 	data() {
 		return {
+			keyword: '',
 			data: ["SheetJS".split(""), "1234567".split("")],
 			cols: [
 				{name:"A", key:0},
@@ -36,17 +37,28 @@ new Vue({
 				const wsname = wb.SheetNames[0];
 				const ws = wb.Sheets[wsname];
 				/* Convert array of arrays */
-				const data = XLSX.utils.sheet_to_json(ws, {header:1, raw:"true"});
+				const data = XLSX.utils.sheet_to_json(ws, {header: 1, raw:"true"});
 				/* Update state */
 				this.data = data;
 				const make_cols = refstr => Array(XLSX.utils.decode_range(refstr).e.c + 1).fill(0).map((x,i) => ({name:XLSX.utils.encode_col(i), key:i}));
 				this.cols = make_cols(ws['!ref']);
+			console.log(this.data);
+			
+				
 			};
 			reader.readAsBinaryString(file);
 		}
 
 
 	},
+
+    computed: {
+        items () {
+            return this.keyword
+                ? this.data.filter(item => item[0].includes(this.keyword))
+                : this.data
+        }
+    }
 
 
 
